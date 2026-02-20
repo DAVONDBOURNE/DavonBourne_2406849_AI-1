@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storyboard — Davon Demar Bourne | IA#1 Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ============ STORYBOARD STYLES ============ */
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #8b5cf6;
+            --accent-dark: #7c3aed;
+            --accent-light: #a78bfa;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-heading: 'Playfair Display', Georgia, serif;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 11pt;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* ===== COVER PAGE ===== */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 60%, #1a1040 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cover-page::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-page h1 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--accent-light);
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            border-radius: 2px;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-details {
+            position: relative;
+            z-index: 1;
+            font-size: 0.95rem;
+            line-height: 2;
+            color: #cbd5e1;
+        }
+
+        .cover-details strong {
+            color: white;
+        }
+
+        .cover-footer {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            z-index: 1;
+        }
+
+        /* ===== PAGE LAYOUT ===== */
+        .page {
+            padding: 2rem 2.5rem;
+            page-break-after: always;
+            min-height: 100vh;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .page-header h2 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .page-number {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .page-intro {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        /* ===== WIREFRAME STYLES ===== */
+        .wireframe-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .wireframe-panel {
+            flex: 1;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .wireframe-panel-title {
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .wireframe-panel-body {
+            padding: 1rem;
+            background: var(--bg-alt);
+        }
+
+        .wf {
+            border: 1.5px solid var(--accent-light);
+            border-radius: 6px;
+            padding: 0.4rem 0.5rem;
+            margin-bottom: 0.4rem;
+            background: rgba(139, 92, 246, 0.04);
+            font-size: 0.62rem;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-dark);
+            font-weight: 600;
+        }
+
+        .wf:last-child {
+            margin-bottom: 0;
+        }
+
+        .wf-dark {
+            background: rgba(15, 23, 42, 0.08);
+            border-color: var(--primary-light);
+        }
+
+        .wf-label {
+            display: block;
+            font-size: 0.58rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .wf-flex {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .wf-box {
+            flex: 1;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px dashed var(--accent-light);
+            border-radius: 4px;
+            padding: 0.25rem 0.3rem;
+            font-size: 0.55rem;
+            color: var(--text-secondary);
+            text-align: center;
+            min-height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', monospace;
+        }
+
+        .wf-box-wide {
+            flex: 2;
+        }
+
+        .wf-col {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .wf-spacer {
+            min-height: 35px;
+        }
+
+        .wireframe-annotation {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            line-height: 1.6;
+            background: white;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .wireframe-annotation strong {
+            color: var(--accent-dark);
+        }
+
+        /* ===== COLOUR PALETTE ===== */
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .swatch {
+            border-radius: 10px;
+            padding: 1.2rem 0.75rem 0.75rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 90px;
+        }
+
+        .swatch-name {
+            font-weight: 700;
+            font-size: 0.72rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .swatch-hex {
+            font-size: 0.65rem;
+            opacity: 0.85;
+            font-family: 'Courier New', monospace;
+        }
+
+        .swatch-rgb {
+            font-size: 0.58rem;
+            opacity: 0.7;
+            font-family: 'Courier New', monospace;
+        }
+
+        .swatch-light {
+            color: var(--text) !important;
+        }
+
+        .swatch-light .swatch-hex,
+        .swatch-light .swatch-rgb {
+            color: var(--text-secondary);
+        }
+
+        /* ===== TOKENS TABLE ===== */
+        .tokens-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-bottom: 1.5rem;
+            font-size: 0.82rem;
+        }
+
+        .tokens-table thead {
+            background: var(--primary);
+            color: white;
+        }
+
+        .tokens-table th {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .tokens-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .tokens-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .tokens-table td {
+            padding: 0.55rem 0.8rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .tokens-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tokens-table tbody tr:last-child td:first-child {
+            border-radius: 0 0 0 8px;
+        }
+
+        .tokens-table tbody tr:last-child td:last-child {
+            border-radius: 0 0 8px 0;
+        }
+
+        .tokens-table tbody tr:nth-child(even) {
+            background: var(--bg-alt);
+        }
+
+        .tokens-table .token-label {
+            font-weight: 600;
+            color: var(--accent-dark);
+        }
+
+        .tokens-table .token-val {
+            font-family: 'Courier New', monospace;
+            font-size: 0.78rem;
+        }
+
+        /* ===== ICON DIMENSIONS ===== */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-card {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .icon-preview {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .icon-preview-circle {
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .icon-preview-small {
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+        }
+
+        .icon-card-name {
+            font-weight: 600;
+            font-size: 0.78rem;
+            color: var(--text);
+            margin-bottom: 0.2rem;
+        }
+
+        .icon-card-dim {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-family: 'Courier New', monospace;
+        }
+
+        /* ===== PROJECT LINKS ===== */
+        .link-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .link-card {
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            padding: 1.2rem;
+            background: var(--bg-alt);
+        }
+
+        .link-card-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .link-card h4 {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--accent-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .link-card p {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .link-card .url {
+            display: block;
+            margin-top: 0.4rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            color: var(--accent);
+            word-break: break-all;
+        }
+
+        /* ===== REFERENCES ===== */
+        .references-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .references-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            padding-left: 2rem;
+            text-indent: -2rem;
+        }
+
+        .references-list li:last-child {
+            border-bottom: none;
+        }
+
+        .references-list a {
+            color: var(--accent);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        /* ===== SECTION HEADING INSIDE PAGE ===== */
+        .section-heading {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid var(--border);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .section-heading:first-of-type {
+            margin-top: 0;
+        }
+
+        /* ===== SITEMAP ===== */
+        .sitemap {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sitemap h4 {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .sitemap-tree {
+            font-family: 'Courier New', monospace;
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .sitemap-tree .folder {
+            color: var(--accent-dark);
+            font-weight: 700;
+        }
+
+        .sitemap-tree .file {
+            color: var(--text);
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            html {
+                font-size: 10pt;
+            }
+
+            body {
+                background: white;
+            }
+
+            .cover-page {
+                min-height: 100vh;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page {
+                padding: 1.5cm 2cm;
+                page-break-after: always;
+            }
+
+            .page:last-child {
+                page-break-after: auto;
+            }
+
+            .swatch,
+            .wireframe-panel-title,
+            .tokens-table thead,
+            .icon-preview {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .no-break {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Back to portfolio button (hidden when printing) */
+        .storyboard-back {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 1000;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.3);
+            transition: background 0.2s, transform 0.15s;
+        }
+        .storyboard-back:hover {
+            background: var(--primary-light);
+            color: white;
+            transform: translateX(-2px);
+        }
+        .storyboard-back::before {
+            content: '←';
+            font-size: 1.1rem;
+        }
+        @media print {
+            .storyboard-back { display: none !important; }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="storyboard-back" title="Back to portfolio">Back</a>
+
+    <!-- ===== PAGE 1: COVER ===== -->
+    <div class="cover-page">
+        <div class="cover-logo">DB</div>
+        <h1>Storyboard</h1>
+        <p class="cover-subtitle">IA#1 Portfolio — Design Document</p>
+        <div class="cover-divider"></div>
+        <div class="cover-details">
+            <strong>Davon Demar Bourne</strong><br>
+            BSc Computer Science — Year 2<br>
+            University of Technology, Jamaica<br><br>
+            <strong>Course:</strong> Web Programming<br>
+            <strong>Assessment:</strong> Individual Assignment #1<br>
+            <strong>Date:</strong> Feb 20, 2026
+        </div>
+        <div class="cover-footer">
+            Storyboard Document — davonbourne2005@gmail.com
+        </div>
+    </div>
+
+    <!-- ===== PAGE 2: WIREFRAME LAYOUTS ===== -->
+    <div class="page">
+        <div class="page-header">
+            <h2>Layout Wireframes</h2>
+            <span class="page-number">Page 1 of 5</span>
+        </div>
+        <p class="page-intro">
+            Two layout wireframes designed for the portfolio — one for mobile (min-width: 600px) and one for desktop (min-width: 950px). Each wireframe shows the &lt;div&gt; groupings and semantic HTML structure used throughout the site.
+        </p>
+
+        <div class="wireframe-row">
+            <!-- Mobile Wireframe -->
+            <div class="wireframe-panel">
+                <div class="wireframe-panel-title">Mobile Layout — min-width: 600px</div>
+                <div class="wireframe-panel-body">
+                    <div class="wf wf-dark">
+                        <span class="wf-label">&lt;header&gt; #site-header</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.logo</div>
+                            <div class="wf-box">.nav-toggle ☰</div>
+                        </div>
+                    </div>
+                    <div class="wf wf-dark wf-spacer">
+                        <span class="wf-label">&lt;section&gt; #hero</span>
+                        <div class="wf-col">
+                            <div class="wf-box">.hero-text (full width)</div>
+                            <div class="wf-box">.hero-image-wrapper</div>
+                            <div class="wf-box">.hero-demographics (2-col grid)</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #personality</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.card</div>
+                            <div class="wf-box">.card</div>
+                        </div>
+                        <div class="wf-flex" style="margin-top:0.25rem;">
+                            <div class="wf-box">.card</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #about (hobbies)</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.card</div>
+                            <div class="wf-box">.card</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #my-hero</span>
+                        <div class="wf-col">
+                            <div class="wf-box">.quote-block</div>
+                            <div class="wf-box">.mentor-card</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #ai-report</span>
+                        <div class="wf-box">.report-content</div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #favorites</span>
+                        <div class="wf-box">.table-wrapper (scroll-x)</div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #vision-mission</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.vm-card</div>
+                            <div class="wf-box">.vm-card</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #twelve-pillars</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.pillar-card</div>
+                            <div class="wf-box">.pillar-card</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #storyboard</span>
+                        <div class="wf-box">.storyboard-container</div>
+                    </div>
+                    <div class="wf wf-dark">
+                        <span class="wf-label">&lt;footer&gt; #site-footer</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.footer-section</div>
+                            <div class="wf-box">.footer-section</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Wireframe -->
+            <div class="wireframe-panel">
+                <div class="wireframe-panel-title">Desktop Layout — min-width: 950px</div>
+                <div class="wireframe-panel-body">
+                    <div class="wf wf-dark">
+                        <span class="wf-label">&lt;header&gt; #site-header</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.logo</div>
+                            <div class="wf-box wf-box-wide">.nav-links (flex row — 10 items)</div>
+                        </div>
+                    </div>
+                    <div class="wf wf-dark wf-spacer">
+                        <span class="wf-label">&lt;section&gt; #hero</span>
+                        <div class="wf-flex">
+                            <div class="wf-box wf-box-wide">.hero-text + .hero-demographics (3-col)</div>
+                            <div class="wf-box">.hero-image</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #personality</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.card</div>
+                            <div class="wf-box">.card</div>
+                            <div class="wf-box">.card</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #about (hobbies)</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.card</div>
+                            <div class="wf-box">.card</div>
+                            <div class="wf-box">.card</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #my-hero</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.quote-block + text</div>
+                            <div class="wf-box">.mentor-card</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #ai-report</span>
+                        <div class="wf-box">.report-content (max-width: 850px)</div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #favorites</span>
+                        <div class="wf-box">.favorites-table (full width)</div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #vision-mission</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.vm-card</div>
+                            <div class="wf-box">.vm-card</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #twelve-pillars</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.pillar-card</div>
+                            <div class="wf-box">.pillar-card</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">&lt;section&gt; #storyboard</span>
+                        <div class="wf-box">.storyboard-container</div>
+                    </div>
+                    <div class="wf wf-dark">
+                        <span class="wf-label">&lt;footer&gt; #site-footer</span>
+                        <div class="wf-flex">
+                            <div class="wf-box wf-box-wide">.footer-section</div>
+                            <div class="wf-box">.footer-section</div>
+                            <div class="wf-box">.footer-section</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <!-- ===== PAGE 3: WIREFRAME — RESUME PAGE ===== -->
+    <div class="page">
+        <div class="page-header">
+            <h2>Resume Page Wireframe</h2>
+            <span class="page-number">Page 2 of 5</span>
+        </div>
+        <p class="page-intro">
+            The resume page (resume.html) uses a single-column centred layout with a max-width of 900px. The header block uses a gradient background matching the hero section, and the body is divided into semantic resume sections.
+        </p>
+
+        <div class="wireframe-row">
+            <!-- Mobile Resume -->
+            <div class="wireframe-panel">
+                <div class="wireframe-panel-title">Resume — Mobile (600px)</div>
+                <div class="wireframe-panel-body">
+                    <div class="wf wf-dark">
+                        <span class="wf-label">&lt;header&gt; #site-header</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.logo</div>
+                            <div class="wf-box">☰</div>
+                        </div>
+                    </div>
+                    <div class="wf wf-dark" style="min-height: 50px;">
+                        <span class="wf-label">.resume-header-block</span>
+                        <div class="wf-col">
+                            <div class="wf-box">h1 — Name</div>
+                            <div class="wf-box">.resume-title</div>
+                            <div class="wf-box">.contact-info (flex-wrap)</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">.resume-body</span>
+                        <div class="wf-col">
+                            <div class="wf-box">Professional Summary</div>
+                            <div class="wf-box">Education</div>
+                            <div class="wf-box">Professional Experience</div>
+                            <div class="wf-box">Key Projects</div>
+                            <div class="wf-box">.skills-grid (1-col → 2-col)</div>
+                            <div class="wf-box">Activities & Awards</div>
+                            <div class="wf-box">References</div>
+                        </div>
+                    </div>
+                    <div class="wf wf-dark">
+                        <span class="wf-label">&lt;footer&gt;</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.footer</div>
+                            <div class="wf-box">.footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Resume -->
+            <div class="wireframe-panel">
+                <div class="wireframe-panel-title">Resume — Desktop (950px)</div>
+                <div class="wireframe-panel-body">
+                    <div class="wf wf-dark">
+                        <span class="wf-label">&lt;header&gt; #site-header</span>
+                        <div class="wf-flex">
+                            <div class="wf-box">.logo</div>
+                            <div class="wf-box wf-box-wide">.nav-links</div>
+                        </div>
+                    </div>
+                    <div class="wf wf-dark" style="min-height: 50px;">
+                        <span class="wf-label">.resume-header-block (max-width: 900px, centred)</span>
+                        <div class="wf-col">
+                            <div class="wf-box">h1 — Name + .resume-title</div>
+                            <div class="wf-box">.contact-info (flex row)</div>
+                        </div>
+                    </div>
+                    <div class="wf">
+                        <span class="wf-label">.resume-body (max-width: 900px)</span>
+                        <div class="wf-col">
+                            <div class="wf-box">Professional Summary</div>
+                            <div class="wf-box">Education — .resume-item(s)</div>
+                            <div class="wf-box">Professional Experience — .resume-item(s)</div>
+                            <div class="wf-box">Key Projects — .resume-item(s)</div>
+                            <div class="wf-box">.skills-grid (3-col)</div>
+                            <div class="wf-box">Activities & Awards &lt;ul&gt;</div>
+                            <div class="wf-box">References</div>
+                        </div>
+                    </div>
+                    <div class="wf wf-dark">
+                        <span class="wf-label">&lt;footer&gt;</span>
+                        <div class="wf-flex">
+                            <div class="wf-box wf-box-wide">.footer</div>
+                            <div class="wf-box">.footer</div>
+                            <div class="wf-box">.footer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- File Structure -->
+        <h3 class="section-heading">File Structure</h3>
+        <div class="sitemap">
+            <h4>Project Directory</h4>
+            <div class="sitemap-tree">
+                <span class="folder">ia1-portfolio/</span><br>
+                ├── <span class="file">style.css</span> — External stylesheet (linked to all pages)<br>
+                ├── <span class="file">storyboard.html</span> — This storyboard document<br>
+                ├── <span class="folder">Codes/</span><br>
+                │&nbsp;&nbsp;&nbsp;├── <span class="file">index.html</span> — Main portfolio page<br>
+                │&nbsp;&nbsp;&nbsp;└── <span class="file">resume.html</span> — CV / resume page<br>
+                └── <span class="folder">Assets/</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;└── <span class="file">profile.svg</span> — Profile illustration (300×300px)
+            </div>
+        </div>
+
+       
+    </div>
+
+    <!-- ===== PAGE 4: COLOUR PALETTE & DESIGN TOKENS ===== -->
+    <div class="page">
+        <div class="page-header">
+            <h2>Colour Palette & Design Tokens</h2>
+            <span class="page-number">Page 3 of 5</span>
+        </div>
+
+        <h3 class="section-heading">Colour Palette</h3>
+        <div class="palette-grid">
+            <div class="swatch" style="background-color: #0f172a;">
+                <span class="swatch-name">Primary</span>
+                <span class="swatch-hex">#0f172a</span>
+                <span class="swatch-rgb">rgb(15, 23, 42)</span>
+            </div>
+            <div class="swatch" style="background-color: #1e293b;">
+                <span class="swatch-name">Primary Light</span>
+                <span class="swatch-hex">#1e293b</span>
+                <span class="swatch-rgb">rgb(30, 41, 59)</span>
+            </div>
+            <div class="swatch" style="background-color: #8b5cf6;">
+                <span class="swatch-name">Accent</span>
+                <span class="swatch-hex">#8b5cf6</span>
+                <span class="swatch-rgb">rgb(139, 92, 246)</span>
+            </div>
+            <div class="swatch" style="background-color: #7c3aed;">
+                <span class="swatch-name">Accent Dark</span>
+                <span class="swatch-hex">#7c3aed</span>
+                <span class="swatch-rgb">rgb(124, 58, 237)</span>
+            </div>
+            <div class="swatch" style="background-color: #a78bfa;">
+                <span class="swatch-name">Accent Light</span>
+                <span class="swatch-hex">#a78bfa</span>
+                <span class="swatch-rgb">rgb(167, 139, 250)</span>
+            </div>
+            <div class="swatch" style="background-color: #10b981;">
+                <span class="swatch-name">Success</span>
+                <span class="swatch-hex">#10b981</span>
+                <span class="swatch-rgb">rgb(16, 185, 129)</span>
+            </div>
+            <div class="swatch" style="background-color: #f59e0b;">
+                <span class="swatch-name">Warning</span>
+                <span class="swatch-hex">#f59e0b</span>
+                <span class="swatch-rgb">rgb(245, 158, 11)</span>
+            </div>
+            <div class="swatch swatch-light" style="background-color: #f8fafc; border: 1px solid #e2e8f0;">
+                <span class="swatch-name">Background</span>
+                <span class="swatch-hex">#f8fafc</span>
+                <span class="swatch-rgb">rgb(248, 250, 252)</span>
+            </div>
+            <div class="swatch swatch-light" style="background-color: #ffffff; border: 1px solid #e2e8f0;">
+                <span class="swatch-name">Surface</span>
+                <span class="swatch-hex">#ffffff</span>
+                <span class="swatch-rgb">rgb(255, 255, 255)</span>
+            </div>
+            <div class="swatch swatch-light" style="background-color: #f1f5f9; border: 1px solid #e2e8f0;">
+                <span class="swatch-name">Background Alt</span>
+                <span class="swatch-hex">#f1f5f9</span>
+                <span class="swatch-rgb">rgb(241, 245, 249)</span>
+            </div>
+            <div class="swatch swatch-light" style="background-color: #e2e8f0; border: 1px solid #cbd5e1;">
+                <span class="swatch-name">Border</span>
+                <span class="swatch-hex">#e2e8f0</span>
+                <span class="swatch-rgb">rgb(226, 232, 240)</span>
+            </div>
+            <div class="swatch" style="background-color: #334155;">
+                <span class="swatch-name">Border Dark</span>
+                <span class="swatch-hex">#334155</span>
+                <span class="swatch-rgb">rgb(51, 65, 85)</span>
+            </div>
+        </div>
+
+        <h3 class="section-heading">Typography & Font Settings</h3>
+        <table class="tokens-table">
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                    <th>Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="token-label">Heading Font</td>
+                    <td class="token-val">'Playfair Display', Georgia, serif</td>
+                    <td>h1, h2, h3, h4, .logo</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Body Font</td>
+                    <td class="token-val">'Inter', -apple-system, sans-serif</td>
+                    <td>body, p, nav, buttons, labels</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Root Font Size</td>
+                    <td class="token-val">16px</td>
+                    <td>html { font-size: 16px }</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Root Font Weight</td>
+                    <td class="token-val">400 (Regular)</td>
+                    <td>Default body weight</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Line Height</td>
+                    <td class="token-val">1.7</td>
+                    <td>body { line-height: 1.7 }</td>
+                </tr>
+                <tr>
+                    <td class="token-label">h1 Size (Mobile)</td>
+                    <td class="token-val">2.25rem → 2.5rem (hero)</td>
+                    <td>Main headings</td>
+                </tr>
+                <tr>
+                    <td class="token-label">h1 Size (Desktop)</td>
+                    <td class="token-val">3.25rem → 3.5rem (hero)</td>
+                    <td>Main headings at 950px+</td>
+                </tr>
+                <tr>
+                    <td class="token-label">h2 Size</td>
+                    <td class="token-val">1.75rem → 2.25rem</td>
+                    <td>Section headings</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Body Text</td>
+                    <td class="token-val">0.92rem – 1rem</td>
+                    <td>Paragraphs, descriptions</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Font Weights Used</td>
+                    <td class="token-val">300, 400, 500, 600, 700, 800</td>
+                    <td>Light to Extra Bold</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="section-heading">Icon & Image Dimensions</h3>
+        <div class="icon-grid">
+            <div class="icon-card">
+                <div class="icon-preview">DB</div>
+                <p class="icon-card-name">Logo Icon</p>
+                <p class="icon-card-dim">42 × 42px</p>
+            </div>
+            <div class="icon-card">
+                <div class="icon-preview icon-preview-circle" style="background: #1e293b;">
+                    <span style="font-size: 0.7rem;">👤</span>
+                </div>
+                <p class="icon-card-name">Profile Image</p>
+                <p class="icon-card-dim">300 × 300px (SVG)</p>
+            </div>
+            <div class="icon-card">
+                <div class="icon-preview icon-preview-circle icon-preview-small">↑</div>
+                <p class="icon-card-name">Back-to-Top</p>
+                <p class="icon-card-dim">46 × 46px</p>
+            </div>
+            <div class="icon-card">
+                <div class="icon-card" style="padding: 0; border: none; background: none;">
+                    <div class="icon-preview icon-preview-small" style="background: #f8fafc; color: var(--text); font-size: 1.2rem; border: 1px solid #e2e8f0;">🔍</div>
+                    <p class="icon-card-name">Card Icons</p>
+                    <p class="icon-card-dim">2.5rem (emoji)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PAGE 5: LAYOUT TOKENS & SPACING ===== -->
+    <div class="page">
+        <div class="page-header">
+            <h2>Layout Tokens & Spacing</h2>
+            <span class="page-number">Page 4 of 5</span>
+        </div>
+
+        <h3 class="section-heading">Dimensions & Spacing</h3>
+        <table class="tokens-table">
+            <thead>
+                <tr>
+                    <th>Token</th>
+                    <th>CSS Variable</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="token-label">Max Content Width</td>
+                    <td class="token-val">--max-width</td>
+                    <td class="token-val">1200px</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Spacing XS</td>
+                    <td class="token-val">--spacing-xs</td>
+                    <td class="token-val">0.5rem (8px)</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Spacing SM</td>
+                    <td class="token-val">--spacing-sm</td>
+                    <td class="token-val">1rem (16px)</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Spacing MD</td>
+                    <td class="token-val">--spacing-md</td>
+                    <td class="token-val">2rem (32px)</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Spacing LG</td>
+                    <td class="token-val">--spacing-lg</td>
+                    <td class="token-val">4rem (64px)</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Spacing XL</td>
+                    <td class="token-val">--spacing-xl</td>
+                    <td class="token-val">6rem (96px)</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Border Radius SM</td>
+                    <td class="token-val">--radius-sm</td>
+                    <td class="token-val">8px</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Border Radius</td>
+                    <td class="token-val">--radius</td>
+                    <td class="token-val">12px</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Border Radius LG</td>
+                    <td class="token-val">--radius-lg</td>
+                    <td class="token-val">20px</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Border Radius Full</td>
+                    <td class="token-val">--radius-full</td>
+                    <td class="token-val">9999px</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Transition Fast</td>
+                    <td class="token-val">--transition-fast</td>
+                    <td class="token-val">0.2s ease</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Transition Default</td>
+                    <td class="token-val">--transition</td>
+                    <td class="token-val">0.3s ease</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Transition Slow</td>
+                    <td class="token-val">--transition-slow</td>
+                    <td class="token-val">0.5s ease</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="section-heading">Responsive Breakpoints</h3>
+        <table class="tokens-table">
+            <thead>
+                <tr>
+                    <th>Breakpoint</th>
+                    <th>Media Query</th>
+                    <th>Layout Changes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="token-label">Base (Mobile)</td>
+                    <td class="token-val">< 600px</td>
+                    <td>Single-column, stacked layout, hamburger nav</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Tablet</td>
+                    <td class="token-val">min-width: 600px</td>
+                    <td>2-col card grids, larger headings, wider padding</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Desktop</td>
+                    <td class="token-val">min-width: 950px</td>
+                    <td>3-col grids, inline nav, hero side-by-side, full footer</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="section-heading">CSS Animations & Transitions</h3>
+        <table class="tokens-table">
+            <thead>
+                <tr>
+                    <th>Animation</th>
+                    <th>Type</th>
+                    <th>Applied To</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="token-label">fadeInUp</td>
+                    <td class="token-val">@keyframes — opacity + translateY</td>
+                    <td>.hero-text, .hero-image-wrapper</td>
+                </tr>
+                <tr>
+                    <td class="token-label">pulse</td>
+                    <td class="token-val">@keyframes — box-shadow pulse</td>
+                    <td>.profile-link (infinite loop)</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Hover Lift</td>
+                    <td class="token-val">transition — translateY(-4px)</td>
+                    <td>.card, .btn-primary, .project-link-card</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Hover Slide</td>
+                    <td class="token-val">transition — translateX(5px)</td>
+                    <td>Footer links, .vm-card</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Skill Tag Hover</td>
+                    <td class="token-val">transition — bg colour + lift</td>
+                    <td>.skill-tag (resume page)</td>
+                </tr>
+                <tr>
+                    <td class="token-label">Logo Rotate</td>
+                    <td class="token-val">transition — rotate(5deg) scale(1.05)</td>
+                    <td>.logo-icon on .logo:hover</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+        <h3 class="section-heading">Pseudo-Classes Used</h3>
+        <table class="tokens-table">
+            <thead>
+                <tr>
+                    <th>Pseudo-Class</th>
+                    <th>Example Usage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="token-label">:hover</td>
+                    <td class="token-val">.card:hover, .btn-primary:hover, .nav-links a:hover</td>
+                </tr>
+                <tr>
+                    <td class="token-label">:focus</td>
+                    <td class="token-val">a:focus, .logo:focus, .profile-link:focus</td>
+                </tr>
+                <tr>
+                    <td class="token-label">:checked</td>
+                    <td class="token-val">.nav-toggle:checked ~ nav .nav-links (hamburger)</td>
+                </tr>
+                <tr>
+                    <td class="token-label">:nth-child(even)</td>
+                    <td class="token-val">.favorites-table tbody tr:nth-child(even)</td>
+                </tr>
+                <tr>
+                    <td class="token-label">:first-child</td>
+                    <td class="token-val">.card:first-child (accent top border)</td>
+                </tr>
+                <tr>
+                    <td class="token-label">:last-child</td>
+                    <td class="token-val">.resume-item:last-child, .references-list li:last-child</td>
+                </tr>
+            </tbody>
+        </table>
+
+</body>
+</html>
